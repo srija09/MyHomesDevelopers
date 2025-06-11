@@ -1,0 +1,153 @@
+.contact-page {
+  background: #f7f9fa;
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  color: #2c5282;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.contact-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-person-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(44, 82, 130, 0.08);
+  padding: 25px;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-person-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(44, 82, 130, 0.12);
+}
+
+.person-name {
+  font-size: 1.6rem;
+  color: #2c5282;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.person-phone {
+  font-size: 1.1rem;
+  color: #4a5568;
+}
+
+.person-phone-group {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center horizontally if there's extra space */
+  gap: 8px; /* Space between number and icon */
+}
+
+.copy-icon {
+  font-size: 1rem; /* Smaller size for a minimalistic look */
+  color: #6c757d; /* A subtle grey color */
+  cursor: pointer;
+  transition: color 0.3s ease; /* Only color transition on hover */
+}
+
+.copy-icon:hover {
+  color: #495057; /* Slightly darker grey on hover */
+  transform: none; /* No scale transform on hover */
+}
+
+/* Removed person-phone a styles as it's no longer a direct link */
+/*
+.person-phone a {
+  color: #2b6cb0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.person-phone a:hover {
+  color: #3182ce;
+}
+*/
+
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-card-container {
+    gap: 20px;
+  }
+
+  .contact-person-card {
+    width: calc(50% - 20px); /* Two cards per row */
+    padding: 20px;
+  }
+
+  .person-name {
+    font-size: 1.4rem;
+  }
+
+  .person-phone {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .contact-card-container {
+    gap: 15px;
+  }
+
+  .contact-person-card {
+    width: 100%; /* One card per row */
+    padding: 18px;
+  }
+
+  .person-name {
+    font-size: 1.3rem;
+  }
+
+  .person-phone {
+    font-size: 0.95rem;
+  }
+}
+
+.copy-feedback-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(44, 82, 130, 0.9);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+} 

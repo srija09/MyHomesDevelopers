@@ -1,0 +1,106 @@
+.about-page {
+  background: #f7f9fa;
+  min-height: 100vh;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  color: #2c5282;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.builders-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.builder-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(44, 82, 130, 0.08);
+  padding: 25px;
+  width: 200px; /* Adjust width to make cards smaller */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.builder-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(44, 82, 130, 0.12);
+}
+
+.builder-circle {
+  width: 100px;
+  height: 100px;
+  background-color: #e0e0e0; /* Grey color for the circle */
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.builder-name {
+  font-size: 1.2rem;
+  color: #2c5282;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .builders-card-container {
+    gap: 20px;
+  }
+
+  .builder-card {
+    width: calc(50% - 20px); /* Two cards per row */
+    padding: 20px;
+  }
+
+  .builder-circle {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 15px;
+  }
+
+  .builder-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .builders-card-container {
+    gap: 15px;
+  }
+
+  .builder-card {
+    width: 100%; /* One card per row */
+    padding: 18px;
+  }
+
+  .builder-circle {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 12px;
+  }
+
+  .builder-name {
+    font-size: 1rem;
+  }
+} 
