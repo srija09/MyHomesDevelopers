@@ -49,7 +49,7 @@ const HouseModels = () => {
           <div className="features-grid">
             <div className="feature-item">
               <span className="feature-icon">🏠</span>
-              <span className="feature-text">Spacious 2BHK Layout</span>
+              <span className="feature-text">Spacious 3BHK Layout</span>
             </div>
             <div className="feature-item">
               <span className="feature-icon">🌅</span>
