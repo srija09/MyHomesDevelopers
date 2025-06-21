@@ -18,7 +18,7 @@ function Navbar() {
       <div className="navbar-container">
         <div className="logo">
           <Link to="/" onClick={closeMenu}>
-            <img src="/uploads/logo.jpeg" alt="Logo" />
+            <img src="/uploads/logo2.jpeg" alt="Logo" />
           </Link>
         </div>
         {/* Overlay for mobile nav */}

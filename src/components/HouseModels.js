@@ -28,7 +28,7 @@ const HouseModels = () => {
               Complete House Plan PDF
             </div>
             <a 
-              href="/uploads/HousePlanPdf.pdf" 
+              href="/uploads/FinalHousePlanPdf.pdf" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="view-button"

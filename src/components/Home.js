@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 
 const amenitiesRow1 = [
   'East facing flats',
@@ -14,54 +14,100 @@ const amenitiesRow2 = [
 ];
 
 function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [showBrochureModal, setShowBrochureModal] = useState(false);
+  
+  const brochureSlides = [
+    '/uploads/brochure4.jpeg',
+    '/uploads/brochure1.jpeg',
+    '/uploads/brochure2.jpeg',
+    '/uploads/brochure3.jpeg'
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide + 1) % brochureSlides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + brochureSlides.length) % brochureSlides.length);
+  };
+
+  const openBrochureModal = () => {
+    setShowBrochureModal(true);
+    setCurrentSlide(0);
+  };
+
+  const closeBrochureModal = () => {
+    setShowBrochureModal(false);
+  };
+
   return (
     <div className="home">
       <div className="hero">
-        <img src="/uploads/exterior.jpg" alt="Apartment Exterior" className="animated-img" />
+        <img src="/uploads/elevation1.jpeg" alt="Apartment Exterior" className="animated-img" />
         <div className="hero-overlay">
           <div className="overlay-content">
-            <h2>Municipality approved 3BHK flats</h2>
+            <h2>Luxurious Premium 3BHK Flats</h2>
             <p>in Vengalrao Nagar, Kavali</p>
-            <p>Call us @ 8096510753</p>
+            {/* <p>Call us @ 9866311545</p> */}
           </div>
         </div>
       </div>
 
-      {/* Animated amenities highlights */}
-      <div className="amenities-highlights">
-        <div className="amenities-row marquee">
-          <div className="marquee-inner">
-            {amenitiesRow1.map((word, idx) => (
-              <span className="amenity-badge" key={idx}>{word}</span>
-            ))}
-            {amenitiesRow1.map((word, idx) => (
-              <span className="amenity-badge" key={`dup1-${idx}`}>{word}</span>
-            ))}
-            {amenitiesRow1.map((word, idx) => (
-              <span className="amenity-badge" key={`dup2-${idx}`}>{word}</span>
-            ))}
-          </div>
-        </div>
-        <div className="amenities-row marquee marquee2">
-          <div className="marquee-inner">
-            {amenitiesRow2.map((word, idx) => (
-              <span className="amenity-badge" key={idx}>{word}</span>
-            ))}
-            {amenitiesRow2.map((word, idx) => (
-              <span className="amenity-badge" key={`dup1-${idx}`}>{word}</span>
-            ))}
-            {amenitiesRow2.map((word, idx) => (
-              <span className="amenity-badge" key={`dup2-${idx}`}>{word}</span>
-            ))}
-          </div>
+      {/* Contact Banner */}
+      <div className="contact-banner">
+        <span className="contact-label">Contact:</span>
+        <div className="contact-numbers">
+          <span>9866311545</span>
+          <span className="separator">-</span>
+          <span>9110736689</span>
         </div>
       </div>
+
+      {/* Brochure Button Section */}
+      <div className="brochure-button-section">
+        <button className="brochure-button" onClick={openBrochureModal}>
+          <span className="brochure-icon">📋</span>
+          <span className="brochure-text">View Brochure</span>
+        </button>
+      </div>
+
+      {/* Brochure Modal */}
+      {showBrochureModal && (
+        <div className="brochure-modal-overlay" onClick={closeBrochureModal}>
+          <div className={`brochure-modal ${showBrochureModal ? 'modal-open' : ''}`} onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close-btn" onClick={closeBrochureModal}>
+              ✕
+            </button>
+            <div className="brochure-modal-content">
+              <h3>Project Brochure</h3>
+              <div className="brochure-slideshow-container">
+                {brochureSlides.map((slide, index) => (
+                  <img 
+                    key={index}
+                    src={slide} 
+                    alt={`Project Brochure ${index + 1}`} 
+                    className={`brochure-slide ${index === currentSlide ? 'active' : ''}`}
+                  />
+                ))}
+                <button className="slide-nav-btn slide-prev" onClick={prevSlide}>
+                  ‹
+                </button>
+                <button className="slide-nav-btn slide-next" onClick={nextSlide}>
+                  ›
+                </button>
+              </div>
+              <div className="brochure-slideshow-border"></div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="content-section">
-        <div className="pricing colored-section">
-          <p className="price-text">3BHK at only ₹65 Lakhs<br/>in our Kavali!!!</p>
+        <div className="pricing colored-section no-bottom-margin">
+          <p className="price-text">3BHK at only ₹75 Lakhs<br/>in our Kavali!!!</p>
           <a 
-            href="https://wa.me/8247754697?text=I%20am%20interested%20to%20buy%20flat%20in%20My%20Homes%20Developers.%20Let's%20discuss!" 
+            href="https://wa.me/9866311545?text=I%20am%20interested%20to%20buy%20flat%20in%20My%20Homes%20Developers.%20Let's%20discuss!" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="whatsapp-button"
@@ -69,6 +115,36 @@ function Home() {
             <span className="whatsapp-icon">💬</span>
             Chat on WhatsApp
           </a>
+        </div>
+
+        {/* Animated amenities highlights */}
+        <div className="amenities-highlights">
+          <div className="amenities-row marquee">
+            <div className="marquee-inner">
+              {amenitiesRow1.map((word, idx) => (
+                <span className="amenity-badge" key={idx}>{word}</span>
+              ))}
+              {amenitiesRow1.map((word, idx) => (
+                <span className="amenity-badge" key={`dup1-${idx}`}>{word}</span>
+              ))}
+              {amenitiesRow1.map((word, idx) => (
+                <span className="amenity-badge" key={`dup2-${idx}`}>{word}</span>
+              ))}
+            </div>
+          </div>
+          <div className="amenities-row marquee marquee2">
+            <div className="marquee-inner">
+              {amenitiesRow2.map((word, idx) => (
+                <span className="amenity-badge" key={idx}>{word}</span>
+              ))}
+              {amenitiesRow2.map((word, idx) => (
+                <span className="amenity-badge" key={`dup1-${idx}`}>{word}</span>
+              ))}
+              {amenitiesRow2.map((word, idx) => (
+                <span className="amenity-badge" key={`dup2-${idx}`}>{word}</span>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="map">
@@ -104,39 +180,9 @@ function Home() {
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
                 </svg>
-                Govt. of AP Registration form
-              </div>
-              <a href="/uploads/registration.pdf" className="view-button" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-                </svg>
-                View
-              </a>
-            </div>
-
-            <div className="document-item">
-              <div className="document-name">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                </svg>
                 GST Certificate
               </div>
               <a href="/uploads/gst.pdf" className="view-button" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-                </svg>
-                View
-              </a>
-            </div>
-
-            <div className="document-item">
-              <div className="document-name">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/>
-                </svg>
-                Partnership deed
-              </div>
-              <a href="/uploads/partnership.pdf" className="view-button" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
                 </svg>
@@ -159,7 +205,7 @@ function Home() {
         </div>
       </div>
 
-      <a href="tel:+918247754697" className="call-button" aria-label="Call us">
+      <a href="tel:+919866311545" className="call-button" aria-label="Call us">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
         </svg>

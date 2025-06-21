@@ -3,10 +3,8 @@ import './Contact.css';
 
 function Contact() {
   const contacts = [
-    { name: 'K Venkapa Naidu', phone: '+91 98765 11111' },
-    { name: 'G Maheswara Rao', phone: '+91 98765 22222' },
-    { name: 'G. Masthan Chowdary', phone: '+91 98765 33333' },
-    { name: 'K. Kalyani', phone: '+91 98765 44444' },
+    { name: 'K Venkapa Naidu', phone: '+91 9866311545' },
+    { name: 'G Maheswara Rao', phone: '+91 9110736689' },
   ];
 
   const [copyMessage, setCopyMessage] = useState({ visible: false, text: '' });
